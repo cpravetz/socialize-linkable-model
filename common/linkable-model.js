@@ -1,6 +1,8 @@
 /* eslint-disable import/no-unresolved */
-import SimpleSchema from 'simpl-schema';
+import SimpleSchema from 'meteor/aldeed:simple-schema';
 /* eslint-enable import/no-unresolved */
+
+SimpleSchema.extendOptions(["index", "unique", "denyInsert", "denyUpdate"]);
 
 export default () => {
     // a place to store references to the collections where the commentable objects are stored.
@@ -46,7 +48,6 @@ export default () => {
     LinkableModel.LinkableSchema = new SimpleSchema({
         linkedObjectId: {
             type: String,
-            regEx: SimpleSchema.RegEx.Id,
             index: 1,
         },
         objectType: {
